@@ -29,7 +29,7 @@ We noticed that the traffic between the client and the server was transmitted vi
 In the app's source code,we noticed that it was automatically updating session variables based on the parameters in the URL, without any input validation. This is a classic Mass Assignment vulnerability.
 
 Vulnerabily cod:
-(assoc :session (merge {"prefer" "light"} session query-params))
+(assoc :session (merge {"prefer" "light"} session query-params)
 
 This line allows combining parameters from the session with those received via the URL. For example, preference settings can be changed using:
 
