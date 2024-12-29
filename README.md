@@ -12,7 +12,10 @@
 This is an easy challenge, except... it's written in Clojure. Can you find your way through all of these parentheses and come out victorious? - @aelmo
 
 
+
 ##Introduction 
+
+
 
 The challenge was in the web category and involved identifying vulnerabilities in the web application. Initially, I thought the vulnerability might be a classic one, specifically an SQL Injection, since there was a login page available. I decided to try an SQL injection first, as the method is quite simple and effective. Using tools like sqlmap, I attempted to identify the database, find the users' table, and extract login credentials.
 
@@ -22,7 +25,12 @@ This was my initial approach, but unfortunately, it didn’t work. I couldn’t 
 We noticed that the traffic between the client and the server was transmitted via HTTP, which hinted at other possible vulnerabilities. After several attempts, we concluded that the application could be exploited using two vulnerabilities: Mass Assignment and Arbitrary Code Execution
 
 
+
+
+
+
 ##First Step
+
 
 
 
@@ -44,7 +52,13 @@ With this request, the application updated the session variable username to the 
 
 
 
+
+
+
 ##Second Step
+
+
+
 
 Although I now had access to the /gists path, the flag was not directly available. An analysis of the source code revealed a serious vulnerability in a POST endpoint used for sending gists.
 
