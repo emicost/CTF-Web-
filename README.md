@@ -41,12 +41,12 @@ Vulnerabily cod:
 
 This line allows combining parameters from the session with those received via the URL. For example, preference settings can be changed using:
 
-/?prefer=dark&redirect=/
+```/?prefer=dark&redirect=/```
 
 We exploited this behavior by sending additional parameters:
 
 
-/?username=admin&redirect=/gists
+```/?username=admin&redirect=/gists```
 
 With this request, the application updated the session variable username to the value admin and redirected the user to /gists, granting unauthorized access.
 
@@ -77,7 +77,7 @@ The read-string function processes user input without validation. The Clojure do
 The paiload. 
 
 
-#=(eval (list (resolve 'println) (System/getenv "FLAG")))
+```#=(eval (list (resolve 'println) (System/getenv "FLAG")))```
 
 ##Rezult 
 
