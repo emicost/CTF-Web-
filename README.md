@@ -37,7 +37,7 @@ We noticed that the traffic between the client and the server was transmitted vi
 In the app's source code,we noticed that it was automatically updating session variables based on the parameters in the URL, without any input validation. This is a classic Mass Assignment vulnerability.
 
 Vulnerabily cod:
-(assoc :session (merge {"prefer" "light"} session query-params)
+```(assoc :session (merge {"prefer" "light"} session query-params)```
 
 This line allows combining parameters from the session with those received via the URL. For example, preference settings can be changed using:
 
@@ -63,10 +63,13 @@ With this request, the application updated the session variable username to the 
 Although I now had access to the /gists path, the flag was not directly available. An analysis of the source code revealed a serious vulnerability in a POST endpoint used for sending gists.
 
 
-(defn insert-gist [input]
-  (let [parsed-input (read-string input)]
-    ;; Salvare input prelucrat
-    (save-to-db parsed-input)))
+```(defn insert-gist [input]```
+
+ ``` (let [parsed-input (read-string input)]```
+ 
+  ```  ;; Salvare input prelucrat```
+  
+  ```  (save-to-db parsed-input)))```
 
 
 The read-string function processes user input without validation. The Clojure documentation warns that this function can be used to execute arbitrary code.
